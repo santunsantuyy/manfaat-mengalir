@@ -173,12 +173,58 @@
 
     <!-- ═══════════════════════════════════════════ -->
     <!-- FEATURED ARTICLE — TERBARU                 -->
-    <!-- Untuk menambah berita baru:                -->
-    <!-- Salin blok .featured-article ini           -->
-    <!-- ganti jadi .article-card untuk berita lama -->
     <!-- ═══════════════════════════════════════════ -->
 
-    <article class="featured-article reveal" data-kategori="kemanusiaan">
+    <article class="featured-article reveal" data-kategori="kebencanaan">
+      <div class="featured-imgs">
+        <img src="aceh-masjid.jpg" alt="Peresmian Renovasi Masjid Ar-Rahim Aceh Tamiang" onerror="this.style.background='var(--red-100)'" />
+        <img src="aceh-baksos.jpg" alt="Bakti Sosial Jalan Cinta Para Pejuang" onerror="this.style.background='var(--red-100)'" />
+      </div>
+      <div class="featured-body">
+        <div class="article-meta">
+          <span class="art-cat">Kebencanaan</span>
+          <span class="art-date">📅 Kamis, 17 April 2026</span>
+          <span class="art-loc">📍 Sekumur, Aceh Tamiang</span>
+        </div>
+        <h2>Peresmian Renovasi Masjid & Tabligh Akbar di Aceh Tamiang</h2>
+        <div class="article-stat">
+          <div class="article-stat-item"><strong>1.000+</strong><span>Warga Hadir</span></div>
+          <div class="article-stat-item"><strong>1.000</strong><span>Paket Baksos</span></div>
+          <div class="article-stat-item"><strong>3</strong><span>Ustadz Hadir</span></div>
+        </div>
+        <div class="article-content">
+          <p>Kamis, 17 April 2026 — Aceh Tamiang menjadi saksi sebuah momen yang penuh haru dan kebahagiaan. Di tengah proses pemulihan pasca bencana banjir yang masih berlangsung, Manfaat Mengalir hadir membawa kabar gembira: peresmian renovasi Masjid Ar-Rahim yang telah lama dinantikan oleh warga setempat.</p>
+          <div class="article-highlight">Hadir langsung dalam peresmian ini, Ustadz Salim A. Fillah bersama Direktur Manfaat Mengalir, Mas Ale — mewakili seluruh donatur dan warga Before Sunrise yang telah menitipkan kepercayaan dan kebaikannya.</div>
+          <p>Kehadiran mereka bukan sekadar seremonial, tetapi adalah wujud nyata bahwa kita tidak meninggalkan saudara-saudara di Tamiang sendirian.</p>
+          <p>Alhamdulillah, lebih dari 1.000 warga memadati acara yang juga diisi dengan <strong>Tabligh Akbar "Jalan Cinta Para Pejuang"</strong> — menghadirkan Ustadz Salim A. Fillah, Ustadz Alief Aslan, dan Ustadz Hammad Rosyadi. Di antara puing-puing yang masih tersisa, suara dzikir dan tausiyah mengalun — mengingatkan bahwa ujian adalah bagian dari perjalanan, dan cinta kepada Allah adalah bekal terkuat para pejuang.</p>
+          <p>Pada hari yang sama juga digelar <strong>bakti sosial untuk 1.000 warga</strong> terdampak bencana — melengkapi hari itu sebagai hari penuh berkah yang InsyaAllah akan lama dikenang oleh masyarakat Aceh Tamiang.</p>
+          <p>Jazakumullahu Khoiran kepada seluruh Warga Before Sunrise. Setiap rupiah yang kalian titipkan bukan hanya membangun masjid — ia membangun harapan, membangun ukhuwah, dan membangun kembali semangat saudara-saudara kita yang sedang berjuang bangkit. Semoga menjadi amal yang terus mengalir. Aamiin. 🤲</p>
+        </div>
+        <div class="article-sign">
+          Dengan penuh syukur dan cinta,
+          <strong>Tim Manfaat Mengalir & Before Sunrise</strong>
+        </div>
+      </div>
+    </article>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- BERITA LAMA — tambahkan di bawah ini       -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="articles-list" id="articles-list-top">
+      <div class="article-card reveal" data-kategori="kemanusiaan">
+        <div class="article-card-img">
+          <img src="berita1.jpeg" alt="Distribusi Sembako MTM3" onerror="this.style.display='none'; this.parentElement.innerHTML='🛍️';" />
+        </div>
+        <div class="article-card-body">
+          <span class="art-cat">Kemanusiaan</span>
+          <h3>Distribusi Sembako untuk Masyarakat Merapi Merbabu</h3>
+          <p>1.250 keluarga menerima paket sembako penuh doa. Total Rp 31.800.000 dari Warga Before Sunrise telah sampai ke tangan-tangan yang berhak di lereng Merapi Merbabu.</p>
+          <span class="art-date">📅 Ahad, 12 April 2026 &nbsp;·&nbsp; 📍 Dusun Candaran, Magelang</span>
+        </div>
+      </div>
+    </div>
+
+    <article class="featured-article reveal" data-kategori="kemanusiaan" style="display:none;">
       <!-- FOTO KEGIATAN -->
       <div class="featured-imgs">
         <img src="berita1.jpeg" alt="Distribusi sembako Merapi Merbabu" onerror="this.style.background='var(--red-100)'" />
@@ -402,13 +448,23 @@
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
     }
-    const featured = document.querySelector('.featured-article');
+    const featuredAll = document.querySelectorAll('.featured-article');
     const cards = document.querySelectorAll('.article-card');
+    const topList = document.getElementById('articles-list-top');
+
     if (kategori === 'semua') {
-      featured.style.display = '';
+      featuredAll.forEach(f => f.style.display = '');
+      // hide old featured (index > 0)
+      featuredAll.forEach((f, i) => { if(i > 0) f.style.display = 'none'; });
+      if(topList) topList.style.display = '';
       cards.forEach(c => c.style.display = '');
     } else {
-      featured.style.display = featured.dataset.kategori === kategori ? '' : 'none';
+      featuredAll.forEach(f => {
+        f.style.display = (f.dataset.kategori === kategori) ? '' : 'none';
+      });
+      // always hide old featured article
+      featuredAll.forEach((f, i) => { if(i > 0) f.style.display = 'none'; });
+      if(topList) topList.style.display = '';
       cards.forEach(c => c.style.display = c.dataset.kategori === kategori ? '' : 'none');
     }
   }
