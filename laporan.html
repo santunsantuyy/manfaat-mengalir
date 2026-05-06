@@ -31,7 +31,38 @@
     .nav-links a:hover, .nav-links a.active { color: var(--red-700); }
     .nav-cta { background: var(--red-800); color: var(--white); border: none; border-radius: 100px; padding: 10px 22px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: background .2s; }
     .nav-cta:hover { background: var(--red-600); }
-    @media (max-width: 768px) { .nav-links { display: none; } }
+        /* hamburger */
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; z-index: 101; }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--ink); margin: 4px 0; border-radius: 2px; transition: all .3s; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    @media (max-width: 768px) {
+      .nav-hamburger { display: block; }
+      .nav-links {
+        display: flex !important;
+        flex-direction: column;
+        position: fixed;
+        top: 68px; left: 0; right: 0;
+        background: var(--white);
+        padding: 20px 5vw 28px;
+        border-bottom: 1px solid var(--red-100);
+        box-shadow: 0 8px 24px rgba(122,11,11,.10);
+        gap: 0;
+        transform: translateY(-120%);
+        opacity: 0;
+        transition: transform .3s ease, opacity .3s ease;
+        pointer-events: none;
+      }
+      .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: all;
+      }
+      .nav-links li { border-bottom: 1px solid var(--red-50); }
+      .nav-links a { display: block; padding: 14px 0; font-size: 15px; font-weight: 600; color: var(--ink); }
+      .nav-links a:hover { color: var(--red-700); }
+    }
 
     /* HERO */
     .page-hero { padding: 120px 5vw 72px; background: linear-gradient(135deg, var(--red-900), var(--red-700)); position: relative; overflow: hidden; text-align: center; }
@@ -167,6 +198,9 @@
     <li><a href="berita.html">Berita</a></li>
   </ul>
   <a href="index.html#infaq" class="nav-cta">Infaq Sekarang</a>
+  <button class="nav-hamburger" aria-label="menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -538,6 +572,22 @@
   window.addEventListener('scroll', () => {
     document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
   });
+
+  // Mobile hamburger menu
+  const hamburger = document.querySelector('.nav-hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+  }
   const revealEls = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
