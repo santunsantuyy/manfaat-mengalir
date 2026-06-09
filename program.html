@@ -76,8 +76,8 @@
     .category-section { max-width: 1200px; margin: 0 auto; padding: 64px 5vw 0; }
     .cat-label { font-size: 12px; font-weight: 600; letter-spacing: .1em; color: var(--red-700); text-transform: uppercase; margin-bottom: 12px; display: block; }
     .cat-title { font-family: 'Playfair Display', serif; font-size: clamp(24px, 3vw, 36px); font-weight: 700; color: var(--red-900); margin-bottom: 32px; }
-    .cat-tabs { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-bottom: 48px; }
-    @media (max-width: 900px) { .cat-tabs { grid-template-columns: repeat(3, 1fr); } }
+    .cat-tabs { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px; margin-bottom: 48px; }
+    @media (max-width: 1000px) { .cat-tabs { grid-template-columns: repeat(4, 1fr); } }
     @media (max-width: 500px) { .cat-tabs { grid-template-columns: repeat(2, 1fr); } }
     .cat-tab { background: var(--white); border: 1.5px solid var(--red-100); border-radius: 16px; padding: 18px 10px; cursor: pointer; text-align: center; transition: all .2s; display: flex; flex-direction: column; align-items: center; gap: 8px; }
     .cat-tab:hover { border-color: var(--red-400); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(122,11,11,.08); }
@@ -173,9 +173,9 @@
 
 <div class="summary-strip">
   <div class="summary-grid reveal">
-    <div class="sum-card"><strong>Rp 3,12 M</strong><span>Total Dana Tersalurkan</span></div>
-    <div class="sum-card"><strong>6</strong><span>Kategori Program</span></div>
-    <div class="sum-card"><strong>5.500+</strong><span>Penerima Manfaat</span></div>
+    <div class="sum-card"><strong>Rp 4 Miliar</strong><span>Total Dana Tersalurkan</span></div>
+    <div class="sum-card"><strong>7</strong><span>Kategori Program</span></div>
+    <div class="sum-card"><strong>35.000+</strong><span>Penerima Manfaat</span></div>
     <div class="sum-card"><strong>Des 2025</strong><span>Program Dimulai Sejak</span></div>
   </div>
 </div>
@@ -213,6 +213,11 @@
       <span class="cat-icon">🤝</span>
       <span class="cat-name">Soskem</span>
       <span class="cat-count">2 program</span>
+    </button>
+    <button class="cat-tab" onclick="showCat('kurban', this)">
+      <span class="cat-icon">🐑</span>
+      <span class="cat-name">Sedekah Daging Kurban</span>
+      <span class="cat-count">1 program</span>
     </button>
   </div>
 </div>
@@ -542,6 +547,53 @@
     </div>
   </div>
 
+  <!-- SEDEKAH DAGING KURBAN -->
+  <div class="cat-content" id="cat-kurban">
+    <div class="cat-header" style="background:#FFF7ED;">
+      <span class="cat-header-icon">🐑</span>
+      <div class="cat-header-info">
+        <h2>Sedekah Daging Kurban</h2>
+        <p>Program kurban tahunan — dari Sabang sampai Gaza, dari ribuan warga tuk ribuan penerima manfaat</p>
+      </div>
+      <div class="cat-header-total"><strong>Rp 889.100.000</strong><span>Total tersalurkan</span></div>
+    </div>
+    <div class="programs-grid">
+      <div class="program-featured">
+        <div class="pfeat-img">🐑</div>
+        <div class="pfeat-body">
+          <h3>Sedekah Daging Kurban 1447H / 2026</h3>
+          <p>Program sedekah daging kurban Idul Adha 1447H yang menjangkau 11 wilayah distribusi di Indonesia dan internasional — dari Aceh hingga Gaza Utara. Pelaksanaan 26–31 Mei 2026.</p>
+          <div class="sub-progs">
+            <div class="sub-prog-row"><span>Warga Before Sunrise</span><strong>Rp 377.000.000</strong></div>
+            <div class="sub-prog-row"><span>Manfaat Mengalir – Respon Bencana Aceh</span><strong>Rp 185.000.000</strong></div>
+            <div class="sub-prog-row"><span>Dana Titipan</span><strong>Rp 77.100.000</strong></div>
+            <div class="sub-prog-row"><span>Bantuan Kemanusiaan Palestina</span><strong>Rp 250.000.000</strong></div>
+          </div>
+          <div class="prog-total-bar"><span>Total Distribusi Kurban 1447H</span><strong>Rp 889.100.000</strong></div>
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:14px;">
+            <div style="background:var(--red-50); border-radius:10px; padding:10px; text-align:center;">
+              <div style="font-family:'Playfair Display',serif; font-size:20px; font-weight:900; color:var(--red-800);">34+1</div>
+              <div style="font-size:10px; color:var(--ink-3);">Sapi + Domba</div>
+            </div>
+            <div style="background:var(--red-50); border-radius:10px; padding:10px; text-align:center;">
+              <div style="font-family:'Playfair Display',serif; font-size:20px; font-weight:900; color:var(--red-800);">10.549</div>
+              <div style="font-size:10px; color:var(--ink-3);">Keluarga Penerima</div>
+            </div>
+            <div style="background:var(--red-50); border-radius:10px; padding:10px; text-align:center;">
+              <div style="font-family:'Playfair Display',serif; font-size:20px; font-weight:900; color:var(--red-800);">11</div>
+              <div style="font-size:10px; color:var(--ink-3);">Wilayah Distribusi</div>
+            </div>
+          </div>
+          <div style="background:var(--red-50); border-radius:10px; padding:12px; margin-bottom:14px; font-size:11px; color:var(--ink-3); line-height:1.8;">
+            <div style="font-weight:600; color:var(--ink); margin-bottom:4px; font-size:12px;">📍 Wilayah distribusi:</div>
+            Aceh Tamiang · Pidie Jaya · Lhokseumawe · Camp Rohingya · Kulon Progo · Gunung Kidul · Ngawi · Magelang · Lombok · Ende NTT · Donggala Sulteng · <strong style="color:var(--red-800);">Gaza Utara, Palestina 🇵🇸</strong>
+          </div>
+          <a href="index.html#infaq" class="btn-infaq">Dukung Program Kurban Berikutnya</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <section class="cta-section">
@@ -566,6 +618,7 @@
         <li><a href="#" onclick="showCat('ibadah',null);return false;">Sarana Ibadah</a></li>
         <li><a href="#" onclick="showCat('dakwah',null);return false;">Dakwah</a></li>
         <li><a href="#" onclick="showCat('soskem',null);return false;">Soskem</a></li>
+        <li><a href="#" onclick="showCat('kurban',null);return false;">Sedekah Daging Kurban</a></li>
       </ul>
     </div>
     <div class="footer-col">
